@@ -12,12 +12,12 @@ const App = () => {
     <div className='app'>
       <Title />
       <Search setIsLoading={setIsLoading} setSearchResults={setSearchResults} />
-      {/* <Preview
+      <Preview
         searchResults={searchResults}
         setIsLoading={setIsLoading}
         setSearchResults={setSearchResults}
         setFeaturedResult={setFeaturedResult}
-      /> */}
+      />
       {/* <Feature
         featuredResult={featuredResult}
         setIsLoading={setIsLoading}

@@ -57,9 +57,7 @@ const Search = ({ setisLoading, setSearchResults }) => {
           type='text'
           placeholder='enter keywords...'
           value={queryString}
-          onChange={(event) => {
-            setQueryString(event.target.value);
-          }}
+          onChange={(event) => setQueryString(event.target.value)}
         />
       </fieldset>
 
@@ -74,9 +72,7 @@ const Search = ({ setisLoading, setSearchResults }) => {
           name='classification'
           id='select-classification'
           value={classification}
-          onChange={(event) => {
-            setClassification(event.target.value);
-          }}
+          onChange={(event) => setClassification(event.target.value)}
         >
           <option value='any'>Any</option>
           {classificationList.map((classification) => {
@@ -97,9 +93,7 @@ const Search = ({ setisLoading, setSearchResults }) => {
           name='century'
           id='select-century'
           value={century}
-          onChange={(event) => {
-            setCentury(event.target.value);
-          }}
+          onChange={(event) => setCentury(event.target.value)}
         >
           <option value='any'>Any</option>
           {centuryList.map((century) => {
