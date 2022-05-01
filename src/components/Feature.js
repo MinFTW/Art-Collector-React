@@ -67,8 +67,11 @@ const Searchable = (props) => {
  * 
  * This component should be exported as default.
  */
-const Feature = (props) => {
 
-}
+
+
+// const Feature = (props) => {
+
+// }
 
 export default Feature;
