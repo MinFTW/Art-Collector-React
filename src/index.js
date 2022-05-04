@@ -13,16 +13,16 @@ const App = () => {
       <Title />
       <Search setIsLoading={setIsLoading} setSearchResults={setSearchResults} />
       <Preview
-        searchResults={searchResults}
         setIsLoading={setIsLoading}
+        searchResults={searchResults}
         setSearchResults={setSearchResults}
         setFeaturedResult={setFeaturedResult}
       />
-      {/* <Feature
-        featuredResult={featuredResult}
+      <Feature
         setIsLoading={setIsLoading}
         setSearchResults={setSearchResults}
-      /> */}
+        featuredResult={featuredResult}
+      />
       {isLoading && <Loading />}
     </div>
   );
