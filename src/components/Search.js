@@ -6,7 +6,7 @@ import {
   fetchQueryResults,
 } from '../api';
 
-const Search = ({ setisLoading, setSearchResults }) => {
+const Search = ({ setIsLoading, setSearchResults }) => {
   const [centuryList, setCenturyList] = useState([]);
   const [classificationList, setClassificationList] = useState([]);
   const [queryString, setQueryString] = useState('');
@@ -31,7 +31,7 @@ const Search = ({ setisLoading, setSearchResults }) => {
       id='search'
       onSubmit={async (event) => {
         event.preventDefault();
-        setisLoading = true;
+        setIsLoading(true);
 
         try {
           const results = await fetchQueryResults({
@@ -43,7 +43,7 @@ const Search = ({ setisLoading, setSearchResults }) => {
         } catch (error) {
           console.error(error);
         } finally {
-          setisLoading = false;
+          setIsLoading(false);
         }
       }}
     >
@@ -73,11 +73,7 @@ const Search = ({ setisLoading, setSearchResults }) => {
         >
           <option value='any'>Any</option>
           {classificationList.map((classification, index) => {
-            return (
-              <option key={index}>
-                {classification.name}
-              </option>
-            );
+            return <option key={index}>{classification.name}</option>;
           })}
         </select>
       </fieldset>
@@ -94,11 +90,7 @@ const Search = ({ setisLoading, setSearchResults }) => {
         >
           <option value='any'>Any</option>
           {centuryList.map((century, index) => {
-            return (
-              <option key={index}>
-                {century.name}
-              </option>
-            );
+            return <option key={index}>{century.name}</option>;
           })}
         </select>
       </fieldset>
