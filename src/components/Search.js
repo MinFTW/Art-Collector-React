@@ -1,10 +1,5 @@
 import React, { useEffect, useState } from 'react';
-
-import {
-  fetchAllCenturies,
-  fetchAllClassifications,
-  fetchQueryResults,
-} from '../api';
+import { fetchAllCenturies, fetchAllClassifications, fetchQueryResults } from '../api';
 
 const Search = ({ setIsLoading, setSearchResults }) => {
   const [centuryList, setCenturyList] = useState([]);

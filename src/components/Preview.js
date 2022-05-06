@@ -1,22 +1,7 @@
 import React from 'react';
-
-/**
- * We need to import fetchQueryResultsFromURL since we will sometimes have urls in info.prev and info.next
- * which are query urls.
- */
 import { fetchQueryResultsFromURL } from '../api';
 
-const Preview = ({
-  setSearchResults,
-  setFeaturedResult,
-  setIsLoading,
-  searchResults: { info, records },
-}) => {
-  /**
-   * Don't touch this function, it's good to go.
-   *
-   * It has to be defined inside the Preview component to have access to setIsLoading, setSearchResults, etc...
-   */
+const Preview = ({ setSearchResults, setFeaturedResult, setIsLoading, searchResults: { info, records }}) => {
   async function fetchPage(pageUrl) {
     setIsLoading(true);
 
@@ -34,16 +19,16 @@ const Preview = ({
     <aside id='preview'>
       <header className='pagination'>
         <button
-          disabled={info.prev ? false : true}
           className='previous'
+          disabled={info.prev ? false : true}
           onClick={() => fetchPage(info.prev)}
         >
           Previous
         </button>
 
         <button
-          disabled={info.next ? false : true}
           className='next'
+          disabled={info.next ? false : true}
           onClick={() => fetchPage(info.next)}
         >
           Next
@@ -54,15 +39,19 @@ const Preview = ({
         {records.map((record, index) => {
           return (
             <div
-              key={index}
               className='object-preview'
+              key={index}
               onClick={(event) => {
                 event.preventDefault();
                 setFeaturedResult(record);
               }}
             >
               {record.primaryimageurl && (
-                <img src={record.primaryimageurl} alt={record.description} />
+                <img
+                  src={record.primaryimageurl}
+                  alt={record.description}
+                  loading='lazy'
+                />
               )}
               {record.title ? <h3>{record.title}</h3> : <h3>MISSING INFO</h3>}
             </div>
