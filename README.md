@@ -1,4 +1,4 @@
-# DESCIPTION
+# DESCRIPTION
 - A simple search engine using the Harvard Art Collection API.
 
 
