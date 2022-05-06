@@ -43,23 +43,6 @@ const Feature = ({ featuredResult, setIsLoading, setSearchResults }) => {
   }
 
 
-  const renderRegularFacts = () => {
-    const { style, dimensions, department, division, contact, creditline } = featuredResult;
-    const facts = [style, dimensions, department, division, contact, creditline];
-    const factNames = [`Style`, `Dimensions`, `Department`, `Division`, `Contact`, `Creditline`];
-
-    return (
-      facts.map((fact, index) => {
-        return fact && 
-        <Fragment key={index}>
-          <span className='title'>{`${factNames[index]}:`}</span>
-          <span className='content'>{fact}</span>
-        </Fragment>
-      })
-    )
-  }
-
-
   const renderSearchableFacts = () => {
     const { culture, technique, medium } = featuredResult;
     const facts = [culture, technique, medium];
@@ -86,6 +69,23 @@ const Feature = ({ featuredResult, setIsLoading, setSearchResults }) => {
   }
 
 
+  const renderRegularFacts = () => {
+    const { style, dimensions, department, division, contact, creditline } = featuredResult;
+    const facts = [style, dimensions, department, division, contact, creditline];
+    const factNames = [`Style`, `Dimensions`, `Department`, `Division`, `Contact`, `Creditline`];
+
+    return (
+      facts.map((fact, index) => {
+        return fact && 
+        <Fragment key={index}>
+          <span className='title'>{`${factNames[index]}:`}</span>
+          <span className='content'>{fact}</span>
+        </Fragment>
+      })
+    )
+  }
+
+  
   const renderPeople = () => {
     const { people } = featuredResult;
 
