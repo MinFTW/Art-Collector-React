@@ -1,7 +1,12 @@
 import React from 'react';
 import { fetchQueryResultsFromURL } from '../api';
 
-const Preview = ({ setSearchResults, setFeaturedResult, setIsLoading, searchResults: { info, records }}) => {
+const Preview = ({
+  setSearchResults,
+  setFeaturedResult,
+  setIsLoading,
+  searchResults: { info, records },
+}) => {
   async function fetchPage(pageUrl) {
     setIsLoading(true);
 

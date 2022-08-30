@@ -2,7 +2,6 @@ import React, { Fragment } from 'react';
 import { fetchQueryResultsFromTermAndValue } from '../api';
 
 const Feature = ({ featuredResult, setIsLoading, setSearchResults }) => {
-
   const renderFacts = () => {
     const { title, dated } = featuredResult;
 
@@ -20,110 +19,144 @@ const Feature = ({ featuredResult, setIsLoading, setSearchResults }) => {
             {renderRegularFacts()}
           </section>
 
-          <section className='photos'>
-            {renderImages()}
-          </section>
-
+          <section className='photos'>{renderImages()}</section>
         </div>
       </main>
     );
   };
 
-
   const renderDescription = () => {
     const { description } = featuredResult;
 
     return (
-       description &&
+      description && (
         <>
           <span className='title'>{`Description:`}</span>
           <span className='content'>{description}</span>
-        </>   
-    )
-  }
-
+        </>
+      )
+    );
+  };
 
   const renderSearchableFacts = () => {
     const { culture, technique, medium } = featuredResult;
     const facts = [culture, technique, medium];
     const factNames = [`Culture`, `Technique`, `Medium`];
-    
+
     return (
       <Fragment>
-        {
-        facts.map((fact, index) => {
-          return fact &&
-            <Fragment key={index}>
-              <span className='title'>{`${factNames[index]}:`}</span>
-              <Searchable 
-                searchTerm={`${factNames[index]}`.toLowerCase()} 
-                searchValue={`${factNames[index]}` === `Medium` ? fact.toLowerCase() : fact } 
-                setIsLoading={setIsLoading} setSearchResults={setSearchResults} />
-            </Fragment>
-          })
-        }
+        {facts.map((fact, index) => {
+          return (
+            fact && (
+              <Fragment key={index}>
+                <span className='title'>{`${factNames[index]}:`}</span>
+                <Searchable
+                  searchTerm={`${factNames[index]}`.toLowerCase()}
+                  searchValue={
+                    `${factNames[index]}` === `Medium`
+                      ? fact.toLowerCase()
+                      : fact
+                  }
+                  setIsLoading={setIsLoading}
+                  setSearchResults={setSearchResults}
+                />
+              </Fragment>
+            )
+          );
+        })}
 
         {renderPeople()}
       </Fragment>
-    )
-  }
-
+    );
+  };
 
   const renderRegularFacts = () => {
-    const { style, dimensions, department, division, contact, creditline } = featuredResult;
-    const facts = [style, dimensions, department, division, contact, creditline];
-    const factNames = [`Style`, `Dimensions`, `Department`, `Division`, `Contact`, `Creditline`];
+    const { style, dimensions, department, division, contact, creditline } =
+      featuredResult;
+    const facts = [
+      style,
+      dimensions,
+      department,
+      division,
+      contact,
+      creditline,
+    ];
+    const factNames = [
+      `Style`,
+      `Dimensions`,
+      `Department`,
+      `Division`,
+      `Contact`,
+      `Creditline`,
+    ];
 
-    return (
-      facts.map((fact, index) => {
-        return fact && 
-        <Fragment key={index}>
-          <span className='title'>{`${factNames[index]}:`}</span>
-          <span className='content'>{fact}</span>
-        </Fragment>
-      })
-    )
-  }
+    return facts.map((fact, index) => {
+      return (
+        fact && (
+          <Fragment key={index}>
+            <span className='title'>{`${factNames[index]}:`}</span>
+            <span className='content'>{fact}</span>
+          </Fragment>
+        )
+      );
+    });
+  };
 
-  
   const renderPeople = () => {
     const { people } = featuredResult;
 
     return (
-      people && people.map((person, index) => {
+      people &&
+      people.map((person, index) => {
         return (
           <Fragment key={index}>
             <span className='title'>{people && `Person:`}</span>
-            <Searchable 
-              searchTerm='person' 
-              searchValue={person.displayname} 
-              setIsLoading={setIsLoading} 
-              setSearchResults={setSearchResults} />
+            <Searchable
+              searchTerm='person'
+              searchValue={person.displayname}
+              setIsLoading={setIsLoading}
+              setSearchResults={setSearchResults}
+            />
           </Fragment>
-        )
+        );
       })
-    )
-  }
-
+    );
+  };
 
   const renderImages = () => {
     const { images } = featuredResult;
-   
-      return images && (
+
+    return (
+      images && (
         <>
-          {images.map((image, index) => {return <img src={image.baseimageurl} alt={image.alttext} key={index} loading='lazy'/> })}
+          {images.map((image, index) => {
+            return (
+              <img
+                src={image.baseimageurl}
+                alt={image.alttext}
+                key={index}
+                loading='lazy'
+              />
+            );
+          })}
         </>
-      )  
-  }
+      )
+    );
+  };
 
   return <>{featuredResult && renderFacts()}</>;
 };
 
-
-const Searchable = ({ searchTerm, searchValue, setIsLoading, setSearchResults }) => {
+const Searchable = ({
+  searchTerm,
+  searchValue,
+  setIsLoading,
+  setSearchResults,
+}) => {
   return (
     <span className='content'>
-      <a href='# '
+      <a
+        href='# '
         onClick={async (event) => {
           event.preventDefault();
           setIsLoading(true);

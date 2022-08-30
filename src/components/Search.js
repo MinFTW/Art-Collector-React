@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { fetchAllCenturies, fetchAllClassifications, fetchQueryResults } from '../api';
+import {
+  fetchAllCenturies,
+  fetchAllClassifications,
+  fetchQueryResults,
+} from '../api';
 
 const Search = ({ setIsLoading, setSearchResults }) => {
   const [centuryList, setCenturyList] = useState([]);
@@ -55,7 +59,7 @@ const Search = ({ setIsLoading, setSearchResults }) => {
 
       <fieldset>
         <label htmlFor='select-classification'>
-          Classification{' '}
+          Classification
           <span className='classification-count'>
             ({classificationList.length})
           </span>
